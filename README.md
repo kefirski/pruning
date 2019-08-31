@@ -28,9 +28,13 @@ Orange plot is the result of applying weight pruning
 with different percentage of zero weights, while blue plot stands for unit pruning.
 
 This result was quite predictable, 
-since weight pruning seems to be more careful – 
+since weight pruning seems to be more careful (and thus more accurate) – 
 units with high norm could contain small number of 
 big weights with the rest of weights being close to zero.
+
+Interesting part in this plots is that even with 80% of zero weights, 
+weight pruning still produce good (or at least, not so bad) results 
+having approximately 97.8% of accuracy versus 98.5% of accuracy in unpruned network.
 
 By the way, I believe that in order to reach outstanding sparsity rates, instead of 
 using naive heuristic approaches like weight or unit pruning, we have to
@@ -46,7 +50,8 @@ any need in sparse computations.
 #### Sparsity optimization
 I added ability to optimize the model with sparse weights.
 
-For example, measurement of evaluation speed for weight pruning with 90% of zero weights is
+For example, measurement of mean evaluation speed for weight pruning with 90% of zero weights
+with batch of 100 28x28 images is
 ```
 no optimization time 0.00790979766845703
 optimization time 0.0018504085540771485
